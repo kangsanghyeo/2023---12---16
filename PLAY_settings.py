@@ -15,3 +15,5 @@ PLATFORM_LIST = [(0, HEIGHT - 50, WIDTH + 50, 50),
 
 BLOCKFORM_LIST = [(600, 350, 100, 20),
                   (660, 130, 100, 20)]
+
+#FLOORFORM_LIST = [(400, HEIGHT*3/5, 100, 20)]##BLOCKFORM_LIST 추가했던 것처럼 똑같이 game_main 에만

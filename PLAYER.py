@@ -19,10 +19,7 @@ class Player(pg.sprite.Sprite):
                 self.sprite_width, self.sprite_height)
         self.image.blit( self.sprite_sheet, (0, 0), rect)
         self.image.set_colorkey(pg.Color(255, 0, 255))
-
-        
-        #self.image = pg.Surface((30, 40)) 
-        #self.image.fill((0, 255, 255)) 
+ 
         self.rect = self.image.get_rect() 
         self.rect.center = (WIDTH/2, HEIGHT/2) 
 
@@ -48,6 +45,12 @@ class Player(pg.sprite.Sprite):
 
         self.rect.y += 0.1
         hits = pg.sprite.spritecollide(self, self.game.blockforms, False)
+        self.rect.y -= 0.1
+        if hits:
+            self.vel.y = -20
+
+        self.rect.y += 0.1
+        hits = pg.sprite.spritecollide(self, self.game.floorforms, False)
         self.rect.y -= 0.1
         if hits:
             self.vel.y = -20
@@ -92,6 +95,15 @@ class Blockform(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self)
         self.image = pg.Surface((w, h))
         self.image.fill((255, 255, 0))
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+class FLOORFORM(pg.sprite.Sprite):
+    def __init__(self, x, y, w, h):
+        pg.sprite.Sprite.__init__(self)
+        self.image = pg.Surface((w, h))
+        self.image.fill((0, 255, 0))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
